@@ -39,5 +39,19 @@ namespace Broids
 
         #endregion
 
+        #region Methods
+
+        /// <summary>
+        /// Deletes all generated birds.
+        /// </summary>
+        private void Clear()
+        {
+            _Birds = new List<Bird>();
+            foreach (Transform bird in BirdsParent.transform)
+                GameObject.Destroy(bird.transform);
+        }
+
+        #endregion
+
     }
 }
