@@ -35,9 +35,13 @@ namespace Broids
         /// <summary>
         /// Initiaizes the bird.
         /// </summary>
-        public void Initialize()
+        public void Initialize(Flock flock)
         {
+            // Give the bird a small push
             Rigidbody.velocity = transform.forward.normalized * MIN_SPEED;
+
+            // Reference the flock this bird belongs to
+            Flock = flock;
         }
 
         #endregion
@@ -48,6 +52,11 @@ namespace Broids
         /// References the rigidbody attached to this object.
         /// </summary>
         private Rigidbody Rigidbody;
+
+        /// <summary>
+        /// The flock this bird belongs to.
+        /// </summary>
+        private Flock Flock;
 
         #endregion
 

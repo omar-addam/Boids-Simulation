@@ -118,7 +118,7 @@ namespace Broids
             );
 
             // Add a velocity
-            birdScript.Initialize();
+            birdScript.Initialize(this);
         }
 
         #endregion
