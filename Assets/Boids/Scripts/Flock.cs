@@ -112,10 +112,13 @@ namespace Broids
             // Set random rotation
             bird.transform.localEulerAngles = new Vector3
             (
-                Random.Range(0, 360),
-                Random.Range(0, 360),
-                Random.Range(0, 360)
+                Random.Range(0f, 360f),
+                Random.Range(0f, 360f),
+                Random.Range(0f, 360f)
             );
+
+            // Add a velocity
+            birdScript.Initialize();
         }
 
         #endregion

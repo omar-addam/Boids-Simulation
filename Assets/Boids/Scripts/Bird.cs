@@ -32,6 +32,14 @@ namespace Broids
             Rigidbody = GetComponent<Rigidbody>();
         }
 
+        /// <summary>
+        /// Initiaizes the bird.
+        /// </summary>
+        public void Initialize()
+        {
+            Rigidbody.velocity = transform.forward.normalized * MIN_SPEED;
+        }
+
         #endregion
 
         #region Fields/Properties
