@@ -36,6 +36,24 @@ namespace Broids
 
         #region Fields/Properties
 
+        [Header("Center")]
+
+        /// <summary>
+        /// The sphere representing the center of the flock.
+        /// </summary>
+        [SerializeField]
+        [Tooltip("The sphere representing the center of the flock.")]
+        private GameObject Center;
+
+        /// <summary>
+        /// The current center of the flock.
+        /// </summary>
+        [SerializeField]
+        [Tooltip("The current center of the flock.")]
+        private Vector3 CenterPosition;
+
+
+
         [Header("Birds")]
 
         /// <summary>

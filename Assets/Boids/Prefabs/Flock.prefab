@@ -28,8 +28,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2217342092975080778}
   - {fileID: 8820742919876344478}
+  - {fileID: 2217342092975080778}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb0c7a97d0389c4783c0c9f8e162486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Center: {fileID: 8910739760211765352}
+  CenterPosition: {x: 0, y: 0, z: 0}
   BirdTemplate: {fileID: 9154218009816631686, guid: 2b1b94a91b29ea348b95b6422c90e7a6, type: 3}
   BirdsParent: {fileID: 7386072178620965303}
   NumberOfBirdsToGenerateOnAwake: 0
@@ -77,7 +79,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1404857135758367434}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8910739760211765352
 GameObject:
@@ -109,7 +111,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1404857135758367434}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4262992162381185964
 MeshFilter:
