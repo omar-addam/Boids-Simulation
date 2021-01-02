@@ -342,3 +342,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0fcaa7f3a6ffb047a0a9e6805495d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1404857135375531411
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1404857135758367434, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404857135758367434, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404857135758367434, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404857135758367434, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404857135758367434, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404857135758367434, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404857135758367434, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404857135758367434, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404857135758367434, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404857135758367434, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404857135758367434, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404857135758367435, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
+      propertyPath: m_Name
+      value: Flock
+      objectReference: {fileID: 0}
+    - target: {fileID: 7606939236671213048, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
+      propertyPath: NumberOfBirdsToGenerateOnAwake
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
