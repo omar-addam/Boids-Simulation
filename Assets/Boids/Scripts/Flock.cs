@@ -7,6 +7,24 @@ namespace Broids
     public class Flock : MonoBehaviour
     {
 
+        #region Initialization
+
+        /// <summary>
+        /// Generates the birds in the flock.
+        /// </summary>
+        /// <param name="numberOfBirds">The number of birds to be generated in this flock.</param>
+        public void Initialize(int numberOfBirds)
+        {
+            // Clear any existing bird
+            Clear();
+
+            // Create new birds
+            for (int i = 0; i < numberOfBirds; i++)
+                CreateBird();
+        }
+
+        #endregion
+
         #region Fields/Properties
 
         [Header("Birds")]
