@@ -27,4 +27,21 @@ public class Bird : MonoBehaviour
 
     #endregion
 
+    #region Methods
+
+    /// <summary>
+    /// Continuous update the speed and rotation of the bird.
+    /// </summary>
+    private void Update()
+    {
+
+
+
+
+        // Update rotation
+        transform.forward = Rigidbody.velocity.normalized;
+    }
+
+    #endregion
+
 }
