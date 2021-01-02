@@ -10,6 +10,15 @@ namespace Broids
         #region Initialization
 
         /// <summary>
+        /// Executes once on awake.
+        /// </summary>
+        private void Awake()
+        {
+            if (NumberOfBirdsToGenerateOnAwake > 0)
+                Initialize(NumberOfBirdsToGenerateOnAwake);
+        }
+
+        /// <summary>
         /// Generates the birds in the flock.
         /// </summary>
         /// <param name="numberOfBirds">The number of birds to be generated in this flock.</param>
@@ -42,6 +51,13 @@ namespace Broids
         [SerializeField]
         [Tooltip("The parent holding all the generated birds.")]
         private GameObject BirdsParent;
+
+        /// <summary>
+        /// The number of birds to generate on awake.
+        /// </summary>
+        [SerializeField]
+        [Tooltip("The number of birds to generate on awake.")]
+        private int NumberOfBirdsToGenerateOnAwake;
 
         /// <summary>
         /// List of all the birds in this flock.
