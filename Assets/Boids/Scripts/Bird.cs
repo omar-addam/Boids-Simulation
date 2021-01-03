@@ -34,6 +34,16 @@ namespace Broids
         /// </summary>
         private const float ALIGNMENT_RADIUS_THRESHOLD = 2;
 
+        /// <summary>
+        /// The distance used to find nearby obstacles that we need to avoid.
+        /// </summary>
+        private const float COLLISION_RADIUS_THRESHOLD = 2;
+
+        /// <summary>
+        /// The weight applied to the collision avoidance steering force.
+        /// </summary>
+        private const float COLLISION_STEERING_WEIGHT = 5;
+
         #endregion
 
         #region Initialization
@@ -94,7 +104,8 @@ namespace Broids
             // Compute alignment
             acceleration += NormalizeSteeringForce(ComputeAlignmentForce());
 
-            // TODO: Compute collision avoidance
+            // Compute collision avoidance
+            acceleration += NormalizeSteeringForce(ComputeCollisionAvoidanceForce()) * COLLISION_STEERING_WEIGHT;
 
             // Compute the new velocity
             Vector3 velocity = Rigidbody.velocity;
@@ -123,6 +134,10 @@ namespace Broids
         /// </summary>
         private Vector3 ComputeCohisionForce()
         {
+            // Check if this is the only bird in the flock
+            if (Flock.Birds.Count == 1)
+                return Vector3.zero;
+
             // Get current center of the flock
             Vector3 center = Flock.CenterPosition;
 
@@ -177,6 +192,20 @@ namespace Broids
             }
 
             return force;
+        }
+
+        /// <summary>
+        /// Computes the force that helps avoid collision.
+        /// </summary>
+        private Vector3 ComputeCollisionAvoidanceForce()
+        {
+            // Check if heading to collision
+            if (!Physics.SphereCast(transform.position, COLLISION_RADIUS_THRESHOLD, transform.forward, 
+                out RaycastHit hitInfo, COLLISION_RADIUS_THRESHOLD))
+                return Vector3.zero;
+
+            // Compute force
+            return transform.position - hitInfo.point;
         }
 
         #endregion
