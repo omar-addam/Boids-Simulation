@@ -124,6 +124,10 @@ namespace Broids
         /// </summary>
         private Vector3 ComputeCohisionForce()
         {
+            // Check if this is the only bird in the flock
+            if (Flock.Birds.Count == 1)
+                return Vector3.zero;
+
             // Get current center of the flock
             Vector3 center = Flock.CenterPosition;
 
