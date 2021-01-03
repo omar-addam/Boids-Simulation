@@ -15,6 +15,9 @@ namespace Broids
         /// </summary>
         private void Awake()
         {
+            if (_FlockSettings == null)
+                _FlockSettings = ScriptableObject.CreateInstance<FlockSettingScriptable>();
+
             if (NumberOfBirdsToGenerateOnAwake > 0)
                 Initialize(NumberOfBirdsToGenerateOnAwake);
         }
@@ -36,6 +39,20 @@ namespace Broids
         #endregion
 
         #region Fields/Properties
+
+        /// <summary>
+        /// A scriptable object instance that contains the flock's settings.
+        /// </summary>
+        [Tooltip("A scriptable object instance that contains the flock's settings.")]
+        [SerializeField]
+        private FlockSettingScriptable _FlockSettings;
+
+        /// <summary>
+        /// A scriptable object instance that contains the flock's settings.
+        /// </summary>
+        public FlockSettingScriptable FlockSettings { get { return _FlockSettings; } }
+
+
 
         [Header("Center")]
 
