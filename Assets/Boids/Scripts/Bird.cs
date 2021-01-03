@@ -34,6 +34,11 @@ namespace Broids
         /// </summary>
         private const float ALIGNMENT_RADIUS_THRESHOLD = 2;
 
+        /// <summary>
+        /// The distance used to find nearby obstacles that we need to avoid.
+        /// </summary>
+        private const float COLLISION_RADIUS_THRESHOLD = 2;
+
         #endregion
 
         #region Initialization
@@ -189,8 +194,13 @@ namespace Broids
         /// </summary>
         private Vector3 ComputeCollisionAvoidanceForce()
         {
-            // TODO: Implement
-            return Vector3.zero;
+            // Check if heading to collision
+            if (!Physics.SphereCast(transform.position, COLLISION_RADIUS_THRESHOLD, transform.forward, 
+                out RaycastHit hitInfo, COLLISION_RADIUS_THRESHOLD))
+                return Vector3.zero;
+
+            // Compute force
+            return transform.position - hitInfo.point;
         }
 
         #endregion
