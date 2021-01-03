@@ -7,45 +7,6 @@ namespace Broids
     public class Bird : MonoBehaviour
     {
 
-        #region Constants
-
-        /// <summary>
-        /// The minimum speed a bird can fly.
-        /// </summary>
-        private const float MIN_SPEED = 1;
-
-        /// <summary>
-        /// The maximum speed a bird can fly.
-        /// </summary>
-        private const float MAX_SPEED = 2.5f;
-
-        /// <summary>
-        /// The maximum steering force that can be applied at any framerate.
-        /// </summary>
-        private const float MAX_STEER_FORCE = 1.5f;
-
-        /// <summary>
-        /// The distance used to find nearby birds that we need to keep distance from.
-        /// </summary>
-        private const float SEPERATION_RADIUS_THRESHOLD = 1;
-
-        /// <summary>
-        /// The distance used to find nearby birds that we need to keep aligned with.
-        /// </summary>
-        private const float ALIGNMENT_RADIUS_THRESHOLD = 2;
-
-        /// <summary>
-        /// The distance used to find nearby obstacles that we need to avoid.
-        /// </summary>
-        private const float COLLISION_RADIUS_THRESHOLD = 1;
-
-        /// <summary>
-        /// The weight applied to the collision avoidance steering force.
-        /// </summary>
-        private const float COLLISION_STEERING_WEIGHT = 5;
-
-        #endregion
-
         #region Initialization
 
         /// <summary>
@@ -63,7 +24,7 @@ namespace Broids
         public void Initialize(Flock flock)
         {
             // Give the bird a small push
-            Rigidbody.velocity = transform.forward.normalized * MIN_SPEED;
+            Rigidbody.velocity = transform.forward.normalized * flock.FlockSettings.MinSpeed;
 
             // Reference the flock this bird belongs to
             Flock = flock;
@@ -96,23 +57,28 @@ namespace Broids
             Vector3 acceleration = Vector3.zero;
 
             // Compute cohesion
-            acceleration += NormalizeSteeringForce(ComputeCohisionForce());
+            acceleration += NormalizeSteeringForce(ComputeCohisionForce())
+                * Flock.FlockSettings.CohesionForceWeight;
 
             // Compute seperation
-            acceleration += NormalizeSteeringForce(ComputeSeperationForce());
+            acceleration += NormalizeSteeringForce(ComputeSeperationForce())
+                * Flock.FlockSettings.SeperationForceWeight;
 
             // Compute alignment
-            acceleration += NormalizeSteeringForce(ComputeAlignmentForce());
+            acceleration += NormalizeSteeringForce(ComputeAlignmentForce())
+                * Flock.FlockSettings.AlignmentForceWeight;
 
             // Compute collision avoidance
-            acceleration += NormalizeSteeringForce(ComputeCollisionAvoidanceForce()) * COLLISION_STEERING_WEIGHT;
+            acceleration += NormalizeSteeringForce(ComputeCollisionAvoidanceForce()) 
+                * Flock.FlockSettings.CollisionAvoidanceForceWeight;
 
             // Compute the new velocity
             Vector3 velocity = Rigidbody.velocity;
             velocity += acceleration * Time.deltaTime;
 
             // Ensure the velocity remains within the accepted range
-            velocity = velocity.normalized * Mathf.Clamp(velocity.magnitude, MIN_SPEED, MAX_SPEED);
+            velocity = velocity.normalized * Mathf.Clamp(velocity.magnitude,
+                Flock.FlockSettings.MinSpeed, Flock.FlockSettings.MaxSpeed);
 
             // Apply velocity
             Rigidbody.velocity = velocity;
@@ -126,7 +92,7 @@ namespace Broids
         /// </summary>
         private Vector3 NormalizeSteeringForce(Vector3 force)
         {
-            return force.normalized * Mathf.Clamp(force.magnitude, 0, MAX_STEER_FORCE);
+            return force.normalized * Mathf.Clamp(force.magnitude, 0, Flock.FlockSettings.MaxSteerForce);
         }
 
         /// <summary>
@@ -163,7 +129,7 @@ namespace Broids
             foreach (Bird bird in Flock.Birds)
             {
                 if (bird == this
-                    || (bird.transform.position - transform.position).magnitude > SEPERATION_RADIUS_THRESHOLD)
+                    || (bird.transform.position - transform.position).magnitude > Flock.FlockSettings.SeperationRadiusThreshold)
                     continue;
 
                 // Repel aaway
@@ -185,7 +151,7 @@ namespace Broids
             foreach (Bird bird in Flock.Birds)
             {
                 if (bird == this
-                    || (bird.transform.position - transform.position).magnitude > ALIGNMENT_RADIUS_THRESHOLD)
+                    || (bird.transform.position - transform.position).magnitude > Flock.FlockSettings.AlignmentRadiusThreshold)
                     continue;
 
                 force += bird.transform.forward;
@@ -200,8 +166,11 @@ namespace Broids
         private Vector3 ComputeCollisionAvoidanceForce()
         {
             // Check if heading to collision
-            if (!Physics.SphereCast(transform.position, COLLISION_RADIUS_THRESHOLD, transform.forward, 
-                out RaycastHit hitInfo, COLLISION_RADIUS_THRESHOLD))
+            if (!Physics.SphereCast(transform.position,
+                Flock.FlockSettings.CollisionAvoidanceRadiusThreshold, 
+                transform.forward, 
+                out RaycastHit hitInfo,
+                Flock.FlockSettings.CollisionAvoidanceRadiusThreshold))
                 return Vector3.zero;
 
             // Compute force
