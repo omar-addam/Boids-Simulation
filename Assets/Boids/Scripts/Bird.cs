@@ -75,7 +75,14 @@ namespace Broids
             // Initialize the new velocity
             Vector3 acceleration = Vector3.zero;
 
-            // TODO: Compute acceleration
+            // Compute cohesion
+            acceleration += NormalizeSteeringForce(ComputeCohisionForce());
+
+            // TODO: Compute seperation
+
+            // TODO: Compute alignment
+
+            // TODO: Compute collision avoidance
 
             // Compute the new velocity
             Vector3 velocity = Rigidbody.velocity;
