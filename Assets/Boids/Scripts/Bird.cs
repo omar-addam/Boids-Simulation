@@ -92,6 +92,24 @@ namespace Broids
         }
 
         /// <summary>
+        /// Computes the cohision force that will pull the bird back to the center of the flock.
+        /// </summary>
+        private Vector3 ComputeCohisionForce()
+        {
+            // Get current center of the flock
+            Vector3 center = Flock.CenterPosition;
+
+            // Get rid of this bird's position from the center
+            float newCenterX = center.x * Flock.Birds.Count - transform.localPosition.x;
+            float newCenterY = center.y * Flock.Birds.Count - transform.localPosition.y;
+            float newCenterZ = center.z * Flock.Birds.Count - transform.localPosition.z;
+            Vector3 newCenter = new Vector3(newCenterX, newCenterY, newCenterZ) / (Flock.Birds.Count - 1);
+
+            // Compute force
+            return newCenter - transform.localPosition;
+        }
+
+        /// <summary>
         /// Normalizes the steering force and clamps it.
         /// </summary>
         private Vector3 NormalizeSteeringForce(Vector3 force)
