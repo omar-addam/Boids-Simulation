@@ -12,17 +12,17 @@ namespace Broids
         /// <summary>
         /// The minimum speed a bird can fly.
         /// </summary>
-        private const float MIN_SPEED = 2;
+        private const float MIN_SPEED = 1;
 
         /// <summary>
         /// The maximum speed a bird can fly.
         /// </summary>
-        private const float MAX_SPEED = 5;
+        private const float MAX_SPEED = 2.5f;
 
         /// <summary>
         /// The maximum steering force that can be applied at any framerate.
         /// </summary>
-        private const float MAX_STEER_FORCE = 3;
+        private const float MAX_STEER_FORCE = 1.5f;
 
         /// <summary>
         /// The distance used to find nearby birds that we need to keep distance from.
@@ -37,7 +37,7 @@ namespace Broids
         /// <summary>
         /// The distance used to find nearby obstacles that we need to avoid.
         /// </summary>
-        private const float COLLISION_RADIUS_THRESHOLD = 2;
+        private const float COLLISION_RADIUS_THRESHOLD = 1;
 
         /// <summary>
         /// The weight applied to the collision avoidance steering force.
