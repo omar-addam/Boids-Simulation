@@ -78,7 +78,8 @@ namespace Broids
             // Compute cohesion
             acceleration += NormalizeSteeringForce(ComputeCohisionForce());
 
-            // TODO: Compute seperation
+            // Compute seperation
+            acceleration += NormalizeSteeringForce(ComputeSeperationForce());
 
             // TODO: Compute alignment
 
@@ -114,6 +115,15 @@ namespace Broids
 
             // Compute force
             return newCenter - transform.localPosition;
+        }
+
+        /// <summary>
+        /// Computes the seperation force that will ensure a safe distance is kept between the birds.
+        /// </summary>
+        private Vector3 ComputeSeperationForce()
+        {
+            // TODO: Implement
+            return Vector3.zero;
         }
 
         /// <summary>
