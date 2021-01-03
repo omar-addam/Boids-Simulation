@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Broids
@@ -46,11 +47,16 @@ namespace Broids
         private GameObject Center;
 
         /// <summary>
-        /// The current center of the flock.
+        /// The current center (local position) of the flock.
         /// </summary>
         [SerializeField]
-        [Tooltip("The current center of the flock.")]
-        private Vector3 CenterPosition;
+        [Tooltip("The current center (local position) of the flock.")]
+        private Vector3 _CenterPosition;
+
+        /// <summary>
+        /// The current center (local position) of the flock.
+        /// </summary>
+        public Vector3 CenterPosition { get { return _CenterPosition; } }
 
 
 
@@ -92,6 +98,22 @@ namespace Broids
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Continuously compute the position of the center of the flock.
+        /// </summary>
+        private void Update()
+        {
+            // Compute the center
+            float centerX = 0, centerY = 0, centerZ = 0;
+            foreach (Bird bird in _Birds)
+            {
+                centerX += bird.transform.localPosition.x;
+                centerY += bird.transform.localPosition.y;
+                centerZ += bird.transform.localPosition.z;
+            }
+            _CenterPosition = new Vector3(centerX, centerY, centerZ) / _Birds.Count();
+        }
 
         /// <summary>
         /// Deletes all generated birds.
