@@ -19,6 +19,11 @@ namespace Broids
         /// </summary>
         private const float MAX_SPEED = 5;
 
+        /// <summary>
+        /// The maximum steering force that can be applied at any framerate.
+        /// </summary>
+        private const float MAX_STEER_FORCE = 3;
+
         #endregion
 
         #region Initialization
@@ -84,6 +89,14 @@ namespace Broids
 
             // Update rotation
             transform.forward = Rigidbody.velocity.normalized;
+        }
+
+        /// <summary>
+        /// Normalizes the steering force and clamps it.
+        /// </summary>
+        private Vector3 NormalizeSteeringForce(Vector3 force)
+        {
+            return force.normalized * Mathf.Clamp(force.magnitude, 0, MAX_STEER_FORCE);
         }
 
         #endregion
