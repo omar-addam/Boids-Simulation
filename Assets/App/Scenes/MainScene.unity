@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 529765931}
   - component: {fileID: 529765930}
   m_Layer: 0
-  m_Name: Plane (5)
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 844797766}
   - component: {fileID: 844797765}
   m_Layer: 0
-  m_Name: Plane (4)
+  m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 1705146455}
   - component: {fileID: 1705146454}
   m_Layer: 0
-  m_Name: Plane (2)
+  m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -636,7 +636,7 @@ GameObject:
   - component: {fileID: 1774473802}
   - component: {fileID: 1774473801}
   m_Layer: 0
-  m_Name: Plane (1)
+  m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -732,7 +732,7 @@ GameObject:
   - component: {fileID: 1868907636}
   - component: {fileID: 1868907635}
   m_Layer: 0
-  m_Name: Plane (3)
+  m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -871,7 +871,7 @@ GameObject:
   - component: {fileID: 2076647889}
   - component: {fileID: 2076647888}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
