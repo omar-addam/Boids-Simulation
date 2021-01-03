@@ -39,6 +39,11 @@ namespace Broids
         /// </summary>
         private const float COLLISION_RADIUS_THRESHOLD = 2;
 
+        /// <summary>
+        /// The weight applied to the collision avoidance steering force.
+        /// </summary>
+        private const float COLLISION_STEERING_WEIGHT = 5;
+
         #endregion
 
         #region Initialization
@@ -100,7 +105,7 @@ namespace Broids
             acceleration += NormalizeSteeringForce(ComputeAlignmentForce());
 
             // Compute collision avoidance
-            acceleration += NormalizeSteeringForce(ComputeCollisionAvoidanceForce());
+            acceleration += NormalizeSteeringForce(ComputeCollisionAvoidanceForce()) * COLLISION_STEERING_WEIGHT;
 
             // Compute the new velocity
             Vector3 velocity = Rigidbody.velocity;
