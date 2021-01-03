@@ -24,6 +24,11 @@ namespace Broids
         /// </summary>
         private const float MAX_STEER_FORCE = 3;
 
+        /// <summary>
+        /// The distance used to find nearby birds that we need to keep distance from.
+        /// </summary>
+        private const float SEPERATION_RADIUS_THRESHOLD = 1;
+
         #endregion
 
         #region Initialization
@@ -78,7 +83,8 @@ namespace Broids
             // Compute cohesion
             acceleration += NormalizeSteeringForce(ComputeCohisionForce());
 
-            // TODO: Compute seperation
+            // Compute seperation
+            acceleration += NormalizeSteeringForce(ComputeSeperationForce());
 
             // TODO: Compute alignment
 
@@ -114,6 +120,28 @@ namespace Broids
 
             // Compute force
             return newCenter - transform.localPosition;
+        }
+
+        /// <summary>
+        /// Computes the seperation force that will ensure a safe distance is kept between the birds.
+        /// </summary>
+        private Vector3 ComputeSeperationForce()
+        {
+            // Initialize seperation force
+            Vector3 force = Vector3.zero;
+
+            // Find nearby birds
+            foreach (Bird bird in Flock.Birds)
+            {
+                if (bird == this
+                    || (bird.transform.position - transform.position).magnitude > SEPERATION_RADIUS_THRESHOLD)
+                    continue;
+
+                // Repel aaway
+                force += transform.position - bird.transform.position;
+            }
+
+            return force;
         }
 
         /// <summary>
