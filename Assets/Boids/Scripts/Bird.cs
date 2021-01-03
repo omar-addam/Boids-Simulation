@@ -29,6 +29,11 @@ namespace Broids
         /// </summary>
         private const float SEPERATION_RADIUS_THRESHOLD = 1;
 
+        /// <summary>
+        /// The distance used to find nearby birds that we need to keep aligned with.
+        /// </summary>
+        private const float ALIGNMENT_RADIUS_THRESHOLD = 2;
+
         #endregion
 
         #region Initialization
@@ -86,7 +91,8 @@ namespace Broids
             // Compute seperation
             acceleration += NormalizeSteeringForce(ComputeSeperationForce());
 
-            // TODO: Compute alignment
+            // Compute alignment
+            acceleration += NormalizeSteeringForce(ComputeAlignmentForce());
 
             // TODO: Compute collision avoidance
 
@@ -102,6 +108,14 @@ namespace Broids
 
             // Update rotation
             transform.forward = Rigidbody.velocity.normalized;
+        }
+
+        /// <summary>
+        /// Normalizes the steering force and clamps it.
+        /// </summary>
+        private Vector3 NormalizeSteeringForce(Vector3 force)
+        {
+            return force.normalized * Mathf.Clamp(force.magnitude, 0, MAX_STEER_FORCE);
         }
 
         /// <summary>
@@ -123,7 +137,7 @@ namespace Broids
         }
 
         /// <summary>
-        /// Computes the seperation force that will ensure a safe distance is kept between the birds.
+        /// Computes the seperation force that ensures a safe distance is kept between the birds.
         /// </summary>
         private Vector3 ComputeSeperationForce()
         {
@@ -145,11 +159,24 @@ namespace Broids
         }
 
         /// <summary>
-        /// Normalizes the steering force and clamps it.
+        /// Computes the alignment force that aligns this bird with nearby birds.
         /// </summary>
-        private Vector3 NormalizeSteeringForce(Vector3 force)
+        private Vector3 ComputeAlignmentForce()
         {
-            return force.normalized * Mathf.Clamp(force.magnitude, 0, MAX_STEER_FORCE);
+            // Initialize alignment force
+            Vector3 force = Vector3.zero;
+
+            // Find nearby birds
+            foreach (Bird bird in Flock.Birds)
+            {
+                if (bird == this
+                    || (bird.transform.position - transform.position).magnitude > ALIGNMENT_RADIUS_THRESHOLD)
+                    continue;
+
+                force += bird.transform.forward;
+            }
+
+            return force;
         }
 
         #endregion
