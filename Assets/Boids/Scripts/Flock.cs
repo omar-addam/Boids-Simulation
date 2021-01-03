@@ -15,6 +15,9 @@ namespace Broids
         /// </summary>
         private void Awake()
         {
+            if (_FlockSettings == null)
+                _FlockSettings = ScriptableObject.CreateInstance<FlockSettingScriptable>();
+
             if (NumberOfBirdsToGenerateOnAwake > 0)
                 Initialize(NumberOfBirdsToGenerateOnAwake);
         }
