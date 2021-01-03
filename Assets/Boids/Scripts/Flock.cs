@@ -113,6 +113,9 @@ namespace Broids
                 centerZ += bird.transform.localPosition.z;
             }
             _CenterPosition = new Vector3(centerX, centerY, centerZ) / _Birds.Count();
+
+            // Move the sphere to the center
+            Center.transform.localPosition = _CenterPosition;
         }
 
         /// <summary>
