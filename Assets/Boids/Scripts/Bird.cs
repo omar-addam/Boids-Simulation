@@ -94,7 +94,8 @@ namespace Broids
             // Compute alignment
             acceleration += NormalizeSteeringForce(ComputeAlignmentForce());
 
-            // TODO: Compute collision avoidance
+            // Compute collision avoidance
+            acceleration += NormalizeSteeringForce(ComputeCollisionAvoidanceForce());
 
             // Compute the new velocity
             Vector3 velocity = Rigidbody.velocity;
@@ -177,6 +178,15 @@ namespace Broids
             }
 
             return force;
+        }
+
+        /// <summary>
+        /// Computes the force that helps avoid collision.
+        /// </summary>
+        private Vector3 ComputeCollisionAvoidanceForce()
+        {
+            // TODO: Implement
+            return Vector3.zero;
         }
 
         #endregion
