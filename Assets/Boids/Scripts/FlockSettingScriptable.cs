@@ -29,6 +29,15 @@ namespace Broids
         public float MaxSteerForce = 1.5f;
 
 
+        [Header("Cohesion Force")]
+
+        /// <summary>
+        /// The weight applied to the cohesion steering force.
+        /// </summary>
+        [Tooltip("The weight applied to the cohesion steering force.")]
+        public float CohesionForceWeight = 1;
+
+
 
         [Header("Seperation Force")]
 
@@ -75,12 +84,6 @@ namespace Broids
         /// </summary>
         [Tooltip("The distance used to find nearby obstacles that we need to avoid.")]
         public float CollisionAvoidanceRadiusThreshold = 1;
-
-        /// <summary>
-        /// The radius that fits the bird's prefab.
-        /// </summary>
-        [Tooltip("The radius that fits the bird's prefab.")]
-        public float CollisionAvoidanceBoundsRadius = 0.5f;
 
     }
 }
