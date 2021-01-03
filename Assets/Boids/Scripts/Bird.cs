@@ -86,7 +86,8 @@ namespace Broids
             // Compute seperation
             acceleration += NormalizeSteeringForce(ComputeSeperationForce());
 
-            // TODO: Compute alignment
+            // Compute alignment
+            acceleration += NormalizeSteeringForce(ComputeAlignmentForce());
 
             // TODO: Compute collision avoidance
 
@@ -102,6 +103,14 @@ namespace Broids
 
             // Update rotation
             transform.forward = Rigidbody.velocity.normalized;
+        }
+
+        /// <summary>
+        /// Normalizes the steering force and clamps it.
+        /// </summary>
+        private Vector3 NormalizeSteeringForce(Vector3 force)
+        {
+            return force.normalized * Mathf.Clamp(force.magnitude, 0, MAX_STEER_FORCE);
         }
 
         /// <summary>
@@ -123,7 +132,7 @@ namespace Broids
         }
 
         /// <summary>
-        /// Computes the seperation force that will ensure a safe distance is kept between the birds.
+        /// Computes the seperation force that ensures a safe distance is kept between the birds.
         /// </summary>
         private Vector3 ComputeSeperationForce()
         {
@@ -145,11 +154,12 @@ namespace Broids
         }
 
         /// <summary>
-        /// Normalizes the steering force and clamps it.
+        /// Computes the alignment force that aligns this bird with nearby birds.
         /// </summary>
-        private Vector3 NormalizeSteeringForce(Vector3 force)
+        private Vector3 ComputeAlignmentForce()
         {
-            return force.normalized * Mathf.Clamp(force.magnitude, 0, MAX_STEER_FORCE);
+            // TODO: Implement
+            return Vector3.zero;
         }
 
         #endregion
