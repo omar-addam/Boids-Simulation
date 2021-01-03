@@ -19,6 +19,11 @@ namespace Broids
         /// </summary>
         private const float MAX_SPEED = 5;
 
+        /// <summary>
+        /// The maximum steering force that can be applied at any framerate.
+        /// </summary>
+        private const float MAX_STEER_FORCE = 3;
+
         #endregion
 
         #region Initialization
@@ -70,7 +75,14 @@ namespace Broids
             // Initialize the new velocity
             Vector3 acceleration = Vector3.zero;
 
-            // TODO: Compute acceleration
+            // Compute cohesion
+            acceleration += NormalizeSteeringForce(ComputeCohisionForce());
+
+            // TODO: Compute seperation
+
+            // TODO: Compute alignment
+
+            // TODO: Compute collision avoidance
 
             // Compute the new velocity
             Vector3 velocity = Rigidbody.velocity;
@@ -84,6 +96,32 @@ namespace Broids
 
             // Update rotation
             transform.forward = Rigidbody.velocity.normalized;
+        }
+
+        /// <summary>
+        /// Computes the cohision force that will pull the bird back to the center of the flock.
+        /// </summary>
+        private Vector3 ComputeCohisionForce()
+        {
+            // Get current center of the flock
+            Vector3 center = Flock.CenterPosition;
+
+            // Get rid of this bird's position from the center
+            float newCenterX = center.x * Flock.Birds.Count - transform.localPosition.x;
+            float newCenterY = center.y * Flock.Birds.Count - transform.localPosition.y;
+            float newCenterZ = center.z * Flock.Birds.Count - transform.localPosition.z;
+            Vector3 newCenter = new Vector3(newCenterX, newCenterY, newCenterZ) / (Flock.Birds.Count - 1);
+
+            // Compute force
+            return newCenter - transform.localPosition;
+        }
+
+        /// <summary>
+        /// Normalizes the steering force and clamps it.
+        /// </summary>
+        private Vector3 NormalizeSteeringForce(Vector3 force)
+        {
+            return force.normalized * Mathf.Clamp(force.magnitude, 0, MAX_STEER_FORCE);
         }
 
         #endregion
