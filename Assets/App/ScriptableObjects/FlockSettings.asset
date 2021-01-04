@@ -17,7 +17,7 @@ MonoBehaviour:
   MaxSpeed: 1
   MaxSteerForce: 0.75
   CohesionForceWeight: 1
-  SeperationForceWeight: 1
+  SeperationForceWeight: 2
   SeperationRadiusThreshold: 1
   AlignmentForceWeight: 1
   AlignmentRadiusThreshold: 2
