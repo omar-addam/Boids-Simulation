@@ -50,6 +50,13 @@ namespace Broids
         [Tooltip("The weight applied to the cohesion steering force.")]
         public float CohesionForceWeight = 1;
 
+        /// <summary>
+        /// Uses the center of the flock when enforcing cohesion.
+        /// The other option is to use neighbor birds.
+        /// </summary>
+        [Tooltip("Uses the center of the flock when enforcing cohesion. The other option is to use neighbor birds.")]
+        public bool UseCenterForCohesion = true;
+
 
 
         [Header("Seperation Force")]
