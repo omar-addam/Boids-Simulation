@@ -26,14 +26,21 @@ public class CameraMovement : MonoBehaviour
     /// </summary>
     [SerializeField]
     [Tooltip("The target which the camera rotates around.")]
-    public GameObject Target;
+    private GameObject Target;
 
     /// <summary>
     /// The speed at which the camera rotates around the target.
     /// </summary>
     [SerializeField]
     [Tooltip("The speed at which the camera rotates around the target.")]
-    public float RotationSpeed = 10f;
+    private float RotationSpeed = 10f;
+
+    /// <summary>
+    /// The position offset applied to the target's position
+    /// </summary>
+    [SerializeField]
+    [Tooltip("The position offset applied to the target's position.")]
+    private Vector3 TragetOffset = Vector3.zero;
 
 
 
@@ -83,6 +90,27 @@ public class CameraMovement : MonoBehaviour
     #region Methods
 
     /// <summary>
+    /// Continuously check if the user is trying to rotate the camera using a mouse.
+    /// </summary>
+    private void Update()
+    {
+        // Check if user is trying to drag the camera
+        if (Input.GetMouseButton(0) || Input.GetAxis("Mouse ScrollWheel") != 0)
+        {
+            // Check if zooming
+            if (Input.GetAxis("Mouse ScrollWheel") != 0)
+            {
+                float smoothedTime = Mathf.Sqrt(Time.deltaTime / 0.02f);
+                Zoom *= 1f - Mathf.Clamp(Input.GetAxis("Mouse ScrollWheel") * smoothedTime * 1f, -.8f, .4f);
+                Zoom = Mathf.Clamp(Zoom, MinZoom, MaxZoom);
+            }
+
+            // Apply rotation
+            RotateCamera();
+        }
+    }
+
+    /// <summary>
     /// Rotates the camera around the target object to fit the provided latitude and longitude.
     /// </summary>
     private void RotateCamera()
@@ -101,6 +129,9 @@ public class CameraMovement : MonoBehaviour
         // Set position and rotation
         transform.rotation = rotation;
         transform.position = position;
+
+        // Apply offset
+        transform.position += TragetOffset;
     }
 
     #endregion
