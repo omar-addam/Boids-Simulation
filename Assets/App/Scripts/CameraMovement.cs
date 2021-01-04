@@ -7,6 +7,24 @@ public class CameraMovement : MonoBehaviour
 
     #region Fields/Properties
 
+    [Header("General")]
+
+    /// <summary>
+    /// The target which the camera rotates around.
+    /// </summary>
+    [SerializeField]
+    [Tooltip("The target which the camera rotates around.")]
+    public GameObject Target;
+
+    /// <summary>
+    /// The speed at which the camera rotates around the target.
+    /// </summary>
+    [SerializeField]
+    [Tooltip("The speed at which the camera rotates around the target.")]
+    public float RotationSpeed = 10f;
+
+
+
     [Header("Zoom")]
 
     /// <summary>
@@ -48,13 +66,6 @@ public class CameraMovement : MonoBehaviour
     [Tooltip("The longitude used to compute the rotation of the camera.")]
     private float Longitude = 0f;
 
-    /// <summary>
-    /// The speed at which the camera rotates around the target.
-    /// </summary>
-    [SerializeField]
-    [Tooltip("The speed at which the camera rotates around the target.")]
-    public float RotationSpeed = 10f;
-
     #endregion
 
     #region Methods
@@ -64,9 +75,18 @@ public class CameraMovement : MonoBehaviour
     /// </summary>
     private void RotateCamera()
     {
-        Quaternion rotation = Quaternion.Euler(Latitude, -Longitude, 0);
-        Vector3 position = -(Quaternion.Euler(Latitude, -Longitude, 0) * Vector3.forward * Zoom);
+        // Get target's center
+        Vector3 center = Vector3.zero;
+        if (Target != null)
+            center = Target.transform.position;
 
+        // Compute rotation
+        Quaternion rotation = Quaternion.Euler(Latitude, -Longitude, 0);
+
+        // Compute position
+        Vector3 position = center - (Quaternion.Euler(Latitude, -Longitude, 0) * Vector3.forward * Zoom);
+        
+        // Set position and rotation
         transform.rotation = rotation;
         transform.position = position;
     }
