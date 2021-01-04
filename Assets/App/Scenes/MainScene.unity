@@ -6850,8 +6850,8 @@ MonoBehaviour:
   Target: {fileID: 102810720}
   RotationSpeed: 10
   MinZoom: 5
-  MaxZoom: 10
-  Zoom: 10
+  MaxZoom: 15
+  Zoom: 15
   Latitude: 0
   Longitude: 0
 --- !u!1001 &968348103
