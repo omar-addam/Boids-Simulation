@@ -65,6 +65,20 @@ public class CameraMovement : MonoBehaviour
     [Header("Rotation")]
 
     /// <summary>
+    /// The maximum latitude a camera can be at.
+    /// </summary>
+    [SerializeField]
+    [Tooltip("The maximum latitude a camera can be at.")]
+    private float MaxLatitude = 90f;
+
+    /// <summary>
+    /// The minimum latitude a camera can be at.
+    /// </summary>
+    [SerializeField]
+    [Tooltip("The minimum latitude a camera can be at.")]
+    private float MinLatitude = -90f;
+
+    /// <summary>
     /// The latitude used to compute the rotation of the camera.
     /// </summary>
     [SerializeField]
@@ -102,6 +116,8 @@ public class CameraMovement : MonoBehaviour
             {
                 Longitude -= Input.GetAxis("Mouse X") * RotationSpeed * Zoom / MaxZoom;
                 Latitude -= Input.GetAxis("Mouse Y") * RotationSpeed * Zoom / MaxZoom;
+
+                Latitude = Mathf.Clamp(Latitude, MinLatitude, MaxLatitude);
             }
 
             // Check if zooming
