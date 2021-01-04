@@ -5,6 +5,18 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
 
+    #region Initialization
+
+    /// <summary>
+    /// Executes once on start.
+    /// </summary>
+    private void Start()
+    {
+        RotateCamera();
+    }
+
+    #endregion
+
     #region Fields/Properties
 
     [Header("General")]
