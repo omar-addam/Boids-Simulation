@@ -18,8 +18,8 @@ namespace Broids
             if (_FlockSettings == null)
                 _FlockSettings = ScriptableObject.CreateInstance<FlockSettingScriptable>();
 
-            if (NumberOfBirdsToGenerateOnAwake > 0)
-                Initialize(NumberOfBirdsToGenerateOnAwake);
+            if (_FlockSettings.NumberOfBirdsToGenerateOnAwake > 0)
+                Initialize(_FlockSettings.NumberOfBirdsToGenerateOnAwake);
         }
 
         /// <summary>
@@ -92,13 +92,6 @@ namespace Broids
         [SerializeField]
         [Tooltip("The parent holding all the generated birds.")]
         private GameObject BirdsParent;
-
-        /// <summary>
-        /// The number of birds to generate on awake.
-        /// </summary>
-        [SerializeField]
-        [Tooltip("The number of birds to generate on awake.")]
-        private int NumberOfBirdsToGenerateOnAwake;
 
         /// <summary>
         /// List of all the birds in this flock.

@@ -17,6 +17,12 @@ namespace Broids
         public bool IsCenterVisible;
 
         /// <summary>
+        /// The number of birds to generate on awake.
+        /// </summary>
+        [Tooltip("The number of birds to generate on awake.")]
+        public int NumberOfBirdsToGenerateOnAwake = 50;
+
+        /// <summary>
         /// The minimum speed a bird can fly.
         /// </summary>
         [Tooltip("The minimum speed a bird can fly.")]
