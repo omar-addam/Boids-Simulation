@@ -15426,6 +15426,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7606939236671213048, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
+      propertyPath: _FlockSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: e4677f57b0879714d96d2fc3328da500, type: 2}
+    - target: {fileID: 7606939236671213048, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
       propertyPath: IsCenterVisible
       value: 1
       objectReference: {fileID: 0}

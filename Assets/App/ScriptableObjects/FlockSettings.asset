@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e6b0f1665a2bf34e929e549d1143153, type: 3}
+  m_Name: FlockSettings
+  m_EditorClassIdentifier: 
+  IsCenterVisible: 0
+  MinSpeed: 1
+  MaxSpeed: 2.5
+  MaxSteerForce: 1.5
+  CohesionForceWeight: 1
+  SeperationForceWeight: 1
+  SeperationRadiusThreshold: 1
+  AlignmentForceWeight: 1
+  AlignmentRadiusThreshold: 2
+  CollisionAvoidanceForceWeight: 5
+  CollisionAvoidanceRadiusThreshold: 1
