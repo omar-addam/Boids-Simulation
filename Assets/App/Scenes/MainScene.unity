@@ -15435,7 +15435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7606939236671213048, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
       propertyPath: NumberOfBirdsToGenerateOnAwake
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b9ef0ce2c961aa4c938da2035ab18ae, type: 3}
