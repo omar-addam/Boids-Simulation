@@ -104,17 +104,41 @@ namespace Broids
             if (Flock.Birds.Count == 1)
                 return Vector3.zero;
 
-            // Get current center of the flock
-            Vector3 center = Flock.CenterPosition;
+            // Check if we are using the center of the flock
+            if (Flock.FlockSettings.UseCenterForCohesion)
+            {
+                // Get current center of the flock
+                Vector3 center = Flock.CenterPosition;
 
-            // Get rid of this bird's position from the center
-            float newCenterX = center.x * Flock.Birds.Count - transform.localPosition.x;
-            float newCenterY = center.y * Flock.Birds.Count - transform.localPosition.y;
-            float newCenterZ = center.z * Flock.Birds.Count - transform.localPosition.z;
-            Vector3 newCenter = new Vector3(newCenterX, newCenterY, newCenterZ) / (Flock.Birds.Count - 1);
+                // Get rid of this bird's position from the center
+                float newCenterX = center.x * Flock.Birds.Count - transform.localPosition.x;
+                float newCenterY = center.y * Flock.Birds.Count - transform.localPosition.y;
+                float newCenterZ = center.z * Flock.Birds.Count - transform.localPosition.z;
+                Vector3 newCenter = new Vector3(newCenterX, newCenterY, newCenterZ) / (Flock.Birds.Count - 1);
+
+                // Compute force
+                return newCenter - transform.localPosition;
+            }
+
+            // Else, use the center of the neighbor birds
+            float centerX = 0, centerY = 0, centerZ = 0;
+            int count = 0;
+            foreach (Bird bird in Flock.Birds)
+            {
+                if (bird == this
+                    || (bird.transform.position - transform.position).magnitude > Flock.FlockSettings.SeperationRadiusThreshold)
+                    continue;
+
+                centerX += bird.transform.localPosition.x;
+                centerY += bird.transform.localPosition.y;
+                centerZ += bird.transform.localPosition.z;
+                count++;
+            }
 
             // Compute force
-            return newCenter - transform.localPosition;
+            return count == 0 
+                ? Vector3.zero 
+                : new Vector3(centerX, centerY, centerZ) / count;
         }
 
         /// <summary>
