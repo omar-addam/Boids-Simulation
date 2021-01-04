@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: FlockSettings
   m_EditorClassIdentifier: 
   IsCenterVisible: 0
-  MinSpeed: 1
-  MaxSpeed: 2.5
-  MaxSteerForce: 1.5
+  MinSpeed: 0.5
+  MaxSpeed: 1
+  MaxSteerForce: 0.75
   CohesionForceWeight: 1
   SeperationForceWeight: 1
   SeperationRadiusThreshold: 1
