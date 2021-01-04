@@ -7,6 +7,8 @@ public class CameraMovement : MonoBehaviour
 
     #region Fields/Properties
 
+    [Header("Zoom")]
+
     /// <summary>
     /// The minimum distance a camera can keep with the target when zooming in.
     /// </summary>
@@ -27,6 +29,24 @@ public class CameraMovement : MonoBehaviour
     [SerializeField]
     [Tooltip("The current distance the camera is keeping with the target.")]
     private float Zoom = 1f;
+
+
+
+    [Header("Rotation Angle")]
+
+    /// <summary>
+    /// The latitude used to compute the rotation of the camera.
+    /// </summary>
+    [SerializeField]
+    [Tooltip("The latitude used to compute the rotation of the camera.")]
+    private float Latitude = 0f;
+
+    /// <summary>
+    /// The longitude used to compute the rotation of the camera.
+    /// </summary>
+    [SerializeField]
+    [Tooltip("The longitude used to compute the rotation of the camera.")]
+    private float Longitude = 0f;
 
     #endregion
 
