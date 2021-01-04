@@ -6847,6 +6847,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f47dca7bf125304f9e2610c95bf83c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Target: {fileID: 102810720}
+  RotationSpeed: 10
+  MinZoom: 5
+  MaxZoom: 10
+  Zoom: 10
+  Latitude: 0
+  Longitude: 0
 --- !u!1001 &968348103
 PrefabInstance:
   m_ObjectHideFlags: 0
