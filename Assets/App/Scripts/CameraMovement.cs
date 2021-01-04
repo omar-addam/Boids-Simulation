@@ -29,13 +29,6 @@ public class CameraMovement : MonoBehaviour
     private GameObject Target;
 
     /// <summary>
-    /// The speed at which the camera rotates around the target.
-    /// </summary>
-    [SerializeField]
-    [Tooltip("The speed at which the camera rotates around the target.")]
-    private float RotationSpeed = 10f;
-
-    /// <summary>
     /// The position offset applied to the target's position
     /// </summary>
     [SerializeField]
@@ -69,7 +62,7 @@ public class CameraMovement : MonoBehaviour
 
 
 
-    [Header("Rotation Angle")]
+    [Header("Rotation")]
 
     /// <summary>
     /// The latitude used to compute the rotation of the camera.
@@ -85,6 +78,13 @@ public class CameraMovement : MonoBehaviour
     [Tooltip("The longitude used to compute the rotation of the camera.")]
     private float Longitude = 0f;
 
+    /// <summary>
+    /// The speed at which the camera rotates around the target.
+    /// </summary>
+    [SerializeField]
+    [Tooltip("The speed at which the camera rotates around the target.")]
+    private float RotationSpeed = 10f;
+
     #endregion
 
     #region Methods
@@ -97,6 +97,13 @@ public class CameraMovement : MonoBehaviour
         // Check if user is trying to drag the camera
         if (Input.GetMouseButton(0) || Input.GetAxis("Mouse ScrollWheel") != 0)
         {
+            // Check if rotating
+            if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
+            {
+                Longitude -= Input.GetAxis("Mouse X") * RotationSpeed * Zoom / MaxZoom;
+                Latitude -= Input.GetAxis("Mouse Y") * RotationSpeed * Zoom / MaxZoom;
+            }
+
             // Check if zooming
             if (Input.GetAxis("Mouse ScrollWheel") != 0)
             {
