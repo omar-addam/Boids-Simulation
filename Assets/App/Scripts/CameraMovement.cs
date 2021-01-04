@@ -48,6 +48,19 @@ public class CameraMovement : MonoBehaviour
     [Tooltip("The longitude used to compute the rotation of the camera.")]
     private float Longitude = 0f;
 
+    /// <summary>
+    /// The speed at which the camera rotates around the target.
+    /// </summary>
+    [SerializeField]
+    [Tooltip("The speed at which the camera rotates around the target.")]
+    public float RotationSpeed = 10f;
+
+    #endregion
+
+    #region Methods
+
+
+
     #endregion
 
 }
