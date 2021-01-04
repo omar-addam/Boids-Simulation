@@ -64,13 +64,6 @@ namespace Broids
         private GameObject Center;
 
         /// <summary>
-        /// States if the sphere representing the center should be visible.
-        /// </summary>
-        [SerializeField]
-        [Tooltip("States if the sphere representing the center should be visible.")]
-        private bool IsCenterVisible;
-
-        /// <summary>
         /// The current center (local position) of the flock.
         /// </summary>
         [SerializeField]
@@ -142,7 +135,7 @@ namespace Broids
             Center.transform.localPosition = _CenterPosition;
 
             // Update sphere visibility
-            Center.gameObject.SetActive(IsCenterVisible);
+            Center.gameObject.SetActive(_FlockSettings.IsCenterVisible);
         }
 
         /// <summary>

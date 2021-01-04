@@ -11,6 +11,12 @@ namespace Broids
         [Header("General")]
 
         /// <summary>
+        /// States if the sphere representing the center of the flock should be visible.
+        /// </summary>
+        [Tooltip("States if the sphere representing the center should be visible.")]
+        public bool IsCenterVisible;
+
+        /// <summary>
         /// The minimum speed a bird can fly.
         /// </summary>
         [Tooltip("The minimum speed a bird can fly.")]
@@ -27,6 +33,7 @@ namespace Broids
         /// </summary>
         [Tooltip("The maximum steering force that can be applied at any frame rate.")]
         public float MaxSteerForce = 1.5f;
+
 
 
         [Header("Cohesion Force")]
