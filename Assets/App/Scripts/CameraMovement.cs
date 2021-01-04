@@ -14,21 +14,21 @@ public class CameraMovement : MonoBehaviour
     /// </summary>
     [SerializeField]
     [Tooltip("The minimum distance a camera can keep with the target when zooming in.")]
-    private float MinZoom = 0.5f;
+    private float MinZoom = 5f;
 
     /// <summary>
     /// The maximum distance a camera can keep with the target when zooming out.
     /// </summary>
     [SerializeField]
     [Tooltip("The maximum distance a camera can keep with the target when zooming out.")]
-    private float MaxZoom = 1f;
+    private float MaxZoom = 10f;
 
     /// <summary>
     /// The current distance the camera is keeping with the target.
     /// </summary>
     [SerializeField]
     [Tooltip("The current distance the camera is keeping with the target.")]
-    private float Zoom = 1f;
+    private float Zoom = 10f;
 
 
 
@@ -59,7 +59,17 @@ public class CameraMovement : MonoBehaviour
 
     #region Methods
 
+    /// <summary>
+    /// Rotates the camera around the target object to fit the provided latitude and longitude.
+    /// </summary>
+    private void RotateCamera()
+    {
+        Quaternion rotation = Quaternion.Euler(Latitude, -Longitude, 0);
+        Vector3 position = -(Quaternion.Euler(Latitude, -Longitude, 0) * Vector3.forward * Zoom);
 
+        transform.rotation = rotation;
+        transform.position = position;
+    }
 
     #endregion
 
