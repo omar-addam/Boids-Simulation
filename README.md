@@ -4,8 +4,8 @@ This project simulates the flocking behavior of birds. It uses Unity3d engine to
 Boids algorithm is an emergent-behavior approach that follows three main rules:
 
 1) **Cohesion** force is applied to local flockmates to steer towards their average position (center of mass) => pulling them toward each other.
-2) **Separation** force is applied to local flockmates to avoid crowding local flockmates => pushing each other away.
-3) **Alignment**:
+2) **Separation** force is applied to local flockmates to avoid crowding => pushing each other away.
+3) **Alignment** force is applied to local flockmates to steer them toward the average direction => travelling in the same direction.
 
 | Cohesion | Separation | Alignment |
 | :-----: | :-------: | :-------: |
