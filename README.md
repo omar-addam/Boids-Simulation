@@ -10,3 +10,5 @@ Boids algorithm is an emergent-behavior approach that follows three main rules:
 | Cohesion | Separation | Alignment |
 | :-----: | :-------: | :-------: |
 | <img src="docs/Cohesion.gif" height="200" /> | <img src="docs/Separation.gif" height="200" /> | <img src="docs/Alignment.gif" height="200" /> |
+
+`The red sphere in the images represents the average position (center of mass) of the entire flock.`
