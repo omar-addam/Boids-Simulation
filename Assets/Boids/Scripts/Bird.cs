@@ -126,7 +126,7 @@ namespace Broids
             foreach (Bird bird in Flock.Birds)
             {
                 if (bird == this
-                    || (bird.transform.position - transform.position).magnitude > Flock.FlockSettings.SeperationRadiusThreshold)
+                    || (bird.transform.position - transform.position).magnitude > Flock.FlockSettings.CohesionRadiusThreshold)
                     continue;
 
                 centerX += bird.transform.localPosition.x;
