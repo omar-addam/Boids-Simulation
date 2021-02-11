@@ -12,3 +12,16 @@ Boids algorithm is an emergent-behavior approach that follows three main rules:
 | <img src="docs/Cohesion.gif" height="200" /> | <img src="docs/Separation.gif" height="200" /> | <img src="docs/Alignment.gif" height="200" /> |
 
 `The red sphere in the images represents the average position (center of mass) of the entire flock.`
+
+Additional rules can be applied to the simulation, such as collision avoidance.
+
+| Collision Avoidance |
+| :-----: |
+| <img src="docs/CollisionAvoidance.gif" height="400" /> |
+
+# Demo
+
+![Simulation](docs/Simulation.gif)
+
+We created a demo that simulates a flock of 50 birds.
+A complete demo can be found on [https://omaddam.github.io/Boids-Simulation/](https://omaddam.github.io/Boids-Simulation/).
