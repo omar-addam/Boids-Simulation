@@ -27,6 +27,12 @@ public class MainSceneManager : MonoBehaviour
 
         // Set and display cohesion settings
         DisplayCohesionSettings(true);
+
+        // Set and display separation settings
+        DisplaySeparationSettings(true);
+
+        // Set and display alignment settings
+        DisplayAlignmentSettings(true);
     }
 
     /// <summary>
@@ -41,6 +47,14 @@ public class MainSceneManager : MonoBehaviour
         // Cohesion settings
         UpdateCohesionSettings();
         DisplayCohesionSettings();
+
+        // Separation settings
+        UpdateSeparationSettings();
+        DisplaySeparationSettings();
+
+        // Alignment settings
+        UpdateAlignmentSettings();
+        DisplayAlignmentSettings();
     }
 
     #endregion
@@ -162,7 +176,7 @@ public class MainSceneManager : MonoBehaviour
     private void DisplayCohesionSettings(bool initialize = false)
     {
         CohesionForceWeightTextUI.text = string.Format("Force weight ({0:0.00})", Settings.CohesionForceWeight);
-        MaximumSpeedTextUI.text = string.Format("Radius ({0:0.00})", Settings.CohesionRadiusThreshold);
+        CohesionRadiusTextUI.text = string.Format("Radius ({0:0.00})", Settings.CohesionRadiusThreshold);
 
         if (initialize)
         {
@@ -208,6 +222,80 @@ public class MainSceneManager : MonoBehaviour
     /// Slider UI element displaying the separation radius.
     /// </summary>
     public Slider SeparationRadiusSliderUI;
+
+    /// <summary>
+    /// Display the current separation settings.
+    /// </summary>
+    private void DisplaySeparationSettings(bool initialize = false)
+    {
+        SeparationForceWeightTextUI.text = string.Format("Force weight ({0:0.00})", Settings.SeperationForceWeight);
+        SeparationRadiusTextUI.text = string.Format("Radius ({0:0.00})", Settings.SeperationRadiusThreshold);
+
+        if (initialize)
+        {
+            SeparationForceWeightSliderUI.value = Settings.SeperationForceWeight;
+            SeparationRadiusSliderUI.value = Settings.SeperationRadiusThreshold;
+        }
+    }
+
+    /// <summary>
+    /// Updates the separation settings.
+    /// </summary>
+    private void UpdateSeparationSettings()
+    {
+        Settings.SeperationForceWeight = SeparationForceWeightSliderUI.value;
+        Settings.SeperationRadiusThreshold = SeparationRadiusSliderUI.value;
+    }
+
+    #endregion
+
+    #region Alignment Settings
+
+    [Header("Alignment")]
+
+    /// <summary>
+    /// Text UI element displaying the alignment force weight.
+    /// </summary>
+    public Text AlignmentForceWeightTextUI;
+
+    /// <summary>
+    /// Slider UI element displaying the alignment force weight.
+    /// </summary>
+    public Slider AlignmentForceWeightSliderUI;
+
+    /// <summary>
+    /// Text UI element displaying the alignment radius.
+    /// </summary>
+    public Text AlignmentRadiusTextUI;
+
+    /// <summary>
+    /// Slider UI element displaying the alignment radius.
+    /// </summary>
+    public Slider AlignmentRadiusSliderUI;
+
+    /// <summary>
+    /// Display the current alignment settings.
+    /// </summary>
+    private void DisplayAlignmentSettings(bool initialize = false)
+    {
+        AlignmentForceWeightTextUI.text = string.Format("Force weight ({0:0.00})", Settings.AlignmentForceWeight);
+        AlignmentRadiusTextUI.text = string.Format("Radius ({0:0.00})", Settings.AlignmentRadiusThreshold);
+
+        if (initialize)
+        {
+            AlignmentForceWeightSliderUI.value = Settings.AlignmentForceWeight;
+            AlignmentRadiusSliderUI.value = Settings.AlignmentRadiusThreshold;
+        }
+    }
+
+    /// <summary>
+    /// Updates the alignment settings.
+    /// </summary>
+    private void UpdateAlignmentSettings()
+    {
+        Settings.AlignmentForceWeight = AlignmentForceWeightSliderUI.value;
+        Settings.AlignmentRadiusThreshold = AlignmentRadiusSliderUI.value;
+    }
 
     #endregion
 
