@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsCenterVisible: 0
   NumberOfBirdsToGenerateOnAwake: 50
-  MinSpeed: 0.5
-  MaxSpeed: 1
+  MinSpeed: 0.25
+  MaxSpeed: 0.5
   MaxSteerForce: 0.75
   CohesionForceWeight: 1
   UseCenterForCohesion: 1
-  SeperationForceWeight: 2
+  CohesionRadiusThreshold: 4
+  SeperationForceWeight: 1
   SeperationRadiusThreshold: 1
   AlignmentForceWeight: 1
   AlignmentRadiusThreshold: 2
