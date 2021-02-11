@@ -67,7 +67,7 @@ public class MainSceneManager : MonoBehaviour
     public Text MinimumSpeedTextUI;
 
     /// <summary>
-    /// Slider UI element displaying the minimum speed
+    /// Slider UI element displaying the minimum speed.
     /// </summary>
     public Slider MinimumSpeedSliderUI;
 
@@ -77,7 +77,7 @@ public class MainSceneManager : MonoBehaviour
     public Text MaximumSpeedTextUI;
 
     /// <summary>
-    /// Slider UI element displaying the minimum speed
+    /// Slider UI element displaying the minimum speed.
     /// </summary>
     public Slider MaximumSpeedSliderUI;
 
@@ -117,6 +117,37 @@ public class MainSceneManager : MonoBehaviour
         Settings.MaxSpeed = MaximumSpeedSliderUI.value;
         Settings.MaxSteerForce = MaximumSteeringForceSliderUI.value;
     }
+
+    #endregion
+
+    #region Cohesion Settings
+
+    [Header("Cohesion")]
+
+    /// <summary>
+    /// Text UI element displaying the cohision force weight.
+    /// </summary>
+    public Text CohesionForceWeightTextUI;
+
+    /// <summary>
+    /// Slider UI element displaying the cohision force weight.
+    /// </summary>
+    public Slider CohesionForceWeightSliderUI;
+
+    /// <summary>
+    /// Text UI element displaying the cohision radius.
+    /// </summary>
+    public Text CohesionRadiusTextUI;
+
+    /// <summary>
+    /// Slider UI element displaying the cohision radius.
+    /// </summary>
+    public Slider CohesionRadiusSliderUI;
+
+    /// <summary>
+    /// Toggle UI element displaying the center status.
+    /// </summary>
+    public Toggle CohesionUseCenterToggleUI;
 
     #endregion
 
