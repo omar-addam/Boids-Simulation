@@ -1,3 +1,4 @@
+using Boids;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,12 @@ using UnityEngine.UI;
 public class MainSceneManager : MonoBehaviour
 {
 
-    #region Initialization
+    #region Initialization and Updates
+
+    /// <summary>
+    /// Flock settings.
+    /// </summary>
+    public FlockSettingScriptable Settings;
 
     /// <summary>
     /// Executes once on start.
@@ -19,7 +25,7 @@ public class MainSceneManager : MonoBehaviour
 
     #endregion
 
-    #region Fields/Properties
+    #region Version
 
     /// <summary>
     /// Text UI element displaying the app version.
@@ -28,10 +34,6 @@ public class MainSceneManager : MonoBehaviour
     [Tooltip("Text UI element displaying the app version.")]
     private Text Version;
 
-    #endregion
-
-    #region Methods
-
     /// <summary>
     /// Displays current project's version.
     /// </summary>
@@ -39,6 +41,12 @@ public class MainSceneManager : MonoBehaviour
     {
         Version.text = string.Format("Version: {0}", Application.version);
     }
+
+    #endregion
+
+    #region General Settings
+
+
 
     #endregion
 
