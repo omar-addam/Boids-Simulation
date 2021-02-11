@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Broids
+namespace Boids
 {
     public class Bird : MonoBehaviour
     {
