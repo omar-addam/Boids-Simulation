@@ -15,13 +15,9 @@ Boids algorithm is an emergent-behavior approach that follows three main rules:
 
 Additional rules can be applied to the simulation, such as collision avoidance.
 
-<p align="center">
-
 | Collision Avoidance |
 | :-----: |
-| <img src="docs/CollisionAvoidance.gif" height="300" /> |
-
-</p>
+| <img src="docs/CollisionAvoidance.gif" height="400" /> |
 
 # Demo
 
