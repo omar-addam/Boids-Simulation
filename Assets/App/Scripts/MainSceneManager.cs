@@ -21,6 +21,19 @@ public class MainSceneManager : MonoBehaviour
     {
         // Display the app version
         DisplayVersion();
+
+        // Set and display general settings
+        DisplayGeneralSettings(true);
+    }
+
+    /// <summary>
+    /// Continuously updates the settings.
+    /// </summary>
+    private void Update()
+    {
+        // General settings
+        UpdateGeneralSettings();
+        DisplayGeneralSettings();
     }
 
     #endregion
@@ -77,6 +90,33 @@ public class MainSceneManager : MonoBehaviour
     /// Slider UI element displaying the maximum steering force.
     /// </summary>
     public Slider MaximumSteeringForceSliderUI;
+
+    /// <summary>
+    /// Display the current general settings.
+    /// </summary>
+    private void DisplayGeneralSettings(bool initialize = false)
+    {
+        MinimumSpeedTextUI.text = string.Format("Minimum speed ({0:0.00})", Settings.MinSpeed);
+        MaximumSpeedTextUI.text = string.Format("Maximum speed ({0:0.00})", Settings.MaxSpeed);
+        MaximumSteeringForceTextUI.text = string.Format("Max steering force ({0:0.00})", Settings.MaxSteerForce);
+
+        if (initialize)
+        {
+            MinimumSpeedSliderUI.value = Settings.MinSpeed;
+            MaximumSpeedSliderUI.value = Settings.MaxSpeed;
+            MaximumSteeringForceSliderUI.value = Settings.MaxSteerForce;
+        }
+    }
+
+    /// <summary>
+    /// Updates the general settings.
+    /// </summary>
+    private void UpdateGeneralSettings()
+    {
+        Settings.MinSpeed = MinimumSpeedSliderUI.value;
+        Settings.MaxSpeed = MaximumSpeedSliderUI.value;
+        Settings.MaxSteerForce = MaximumSteeringForceSliderUI.value;
+    }
 
     #endregion
 
