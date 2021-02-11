@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -108,6 +109,10 @@ public class CameraMovement : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        // Check if hovering over UI
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         // Check if user is trying to drag the camera
         if (Input.GetMouseButton(0) || Input.GetAxis("Mouse ScrollWheel") != 0)
         {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Broids
+namespace Boids
 {
     [CreateAssetMenu(fileName = "FlockSettings", menuName = "ScriptableObjects/FlockSettingsScriptableObject", order = 1)]
     public class FlockSettingScriptable : ScriptableObject
@@ -56,6 +56,12 @@ namespace Broids
         /// </summary>
         [Tooltip("Uses the center of the flock when enforcing cohesion. The other option is to use neighbor birds.")]
         public bool UseCenterForCohesion = true;
+
+        /// <summary>
+        /// The distance used to find nearby birds that we need to stay around.
+        /// </summary>
+        [Tooltip("The distance used to find nearby birds that we need to stay around.")]
+        public float CohesionRadiusThreshold = 4;
 
 
 
