@@ -24,6 +24,9 @@ public class MainSceneManager : MonoBehaviour
 
         // Set and display general settings
         DisplayGeneralSettings(true);
+
+        // Set and display cohesion settings
+        DisplayCohesionSettings(true);
     }
 
     /// <summary>
@@ -34,6 +37,10 @@ public class MainSceneManager : MonoBehaviour
         // General settings
         UpdateGeneralSettings();
         DisplayGeneralSettings();
+
+        // Cohesion settings
+        UpdateCohesionSettings();
+        DisplayCohesionSettings();
     }
 
     #endregion
@@ -148,6 +155,33 @@ public class MainSceneManager : MonoBehaviour
     /// Toggle UI element displaying the center status.
     /// </summary>
     public Toggle CohesionUseCenterToggleUI;
+
+    /// <summary>
+    /// Display the current cohesion settings.
+    /// </summary>
+    private void DisplayCohesionSettings(bool initialize = false)
+    {
+        CohesionForceWeightTextUI.text = string.Format("Force weight ({0:0.00})", Settings.CohesionForceWeight);
+        MaximumSpeedTextUI.text = string.Format("Radius ({0:0.00})", Settings.CohesionRadiusThreshold);
+
+        if (initialize)
+        {
+            CohesionForceWeightSliderUI.value = Settings.CohesionForceWeight;
+            CohesionRadiusSliderUI.value = Settings.CohesionRadiusThreshold;
+            CohesionUseCenterToggleUI.isOn = Settings.UseCenterForCohesion;
+        }
+    }
+
+    /// <summary>
+    /// Updates the cohesion settings.
+    /// </summary>
+    private void UpdateCohesionSettings()
+    {
+        Settings.CohesionForceWeight = CohesionForceWeightSliderUI.value;
+        Settings.CohesionRadiusThreshold = CohesionRadiusSliderUI.value;
+        Settings.UseCenterForCohesion = CohesionUseCenterToggleUI.isOn;
+        Settings.IsCenterVisible = CohesionUseCenterToggleUI.isOn;
+    }
 
     #endregion
 
