@@ -16115,6 +16115,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Settings: {fileID: 11400000, guid: e4677f57b0879714d96d2fc3328da500, type: 2}
   Version: {fileID: 383066249}
+  MinimumSpeedTextUI: {fileID: 1770461403}
+  MinimumSpeedSliderUI: {fileID: 1067327371}
+  MaximumSpeedTextUI: {fileID: 1162654864}
+  MaximumSpeedSliderUI: {fileID: 432246408}
+  MaximumSteeringForceTextUI: {fileID: 326219507}
+  MaximumSteeringForceSliderUI: {fileID: 2134312675}
 --- !u!1 &1968715517
 GameObject:
   m_ObjectHideFlags: 0

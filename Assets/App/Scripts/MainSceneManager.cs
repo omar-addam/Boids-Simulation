@@ -46,7 +46,37 @@ public class MainSceneManager : MonoBehaviour
 
     #region General Settings
 
+    [Header("General")]
 
+    /// <summary>
+    /// Text UI element displaying the minimum speed.
+    /// </summary>
+    public Text MinimumSpeedTextUI;
+
+    /// <summary>
+    /// Slider UI element displaying the minimum speed
+    /// </summary>
+    public Slider MinimumSpeedSliderUI;
+
+    /// <summary>
+    /// Text UI element displaying the maximum speed.
+    /// </summary>
+    public Text MaximumSpeedTextUI;
+
+    /// <summary>
+    /// Slider UI element displaying the minimum speed
+    /// </summary>
+    public Slider MaximumSpeedSliderUI;
+
+    /// <summary>
+    /// Text UI element displaying the maximum steering force.
+    /// </summary>
+    public Text MaximumSteeringForceTextUI;
+
+    /// <summary>
+    /// Slider UI element displaying the maximum steering force.
+    /// </summary>
+    public Slider MaximumSteeringForceSliderUI;
 
     #endregion
 
