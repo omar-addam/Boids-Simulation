@@ -185,4 +185,30 @@ public class MainSceneManager : MonoBehaviour
 
     #endregion
 
+    #region Separation Settings
+
+    [Header("Separation")]
+
+    /// <summary>
+    /// Text UI element displaying the separation force weight.
+    /// </summary>
+    public Text SeparationForceWeightTextUI;
+
+    /// <summary>
+    /// Slider UI element displaying the separation force weight.
+    /// </summary>
+    public Slider SeparationForceWeightSliderUI;
+
+    /// <summary>
+    /// Text UI element displaying the separation radius.
+    /// </summary>
+    public Text SeparationRadiusTextUI;
+
+    /// <summary>
+    /// Slider UI element displaying the separation radius.
+    /// </summary>
+    public Slider SeparationRadiusSliderUI;
+
+    #endregion
+
 }
