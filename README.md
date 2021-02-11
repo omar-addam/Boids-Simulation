@@ -13,6 +13,16 @@ Boids algorithm is an emergent-behavior approach that follows three main rules:
 
 `The red sphere in the images represents the average position (center of mass) of the entire flock.`
 
+Additional rules can be applied to the simulation, such as collision avoidance.
+
+<p align="center">
+
+| Collision Avoidance |
+| :-----: |
+| <img src="docs/CollisionAvoidance.gif" height="300" /> |
+
+</p>
+
 # Demo
 
 ![Simulation](docs/Simulation.gif)
